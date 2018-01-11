@@ -1,1 +1,155 @@
 /* You can add global styles to this file, and also import other style files */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body {
+	font-family: 'Lato', sans-serif;
+	box-sizing: border-box;
+	height: 100%;
+}
+
+/*
+	Layout dos cards
+*/
+
+[scrum-card] {
+	padding: 5px;
+	border-radius: 3px;
+	font-weight: 800;
+	min-width: 25px;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	background: #FF0000;
+	margin: 5px;
+	display: inline-table;
+	text-overflow: ellipsis;
+	padding: 10px;
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+[scrum-card]:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	cursor: move;
+}
+
+.card-content {
+	padding: 15px;
+	height: 950px;
+	column-count: 3;
+	column-gap: 0px;
+}
+
+[border-separator]:first-child {
+	border-right: 1px solid rgba(0,0,0,0.12);	
+}
+
+[border-separator]:last-child {
+	border-left: 1px solid rgba(0,0,0,0.12);
+}
+
+.red .line {
+	width: 100%;
+	height: 1px;
+	background: rgba(255, 255, 255, .55);
+}
+
+.yellow .line {
+	width: 100%;
+	height: 1px;
+	background: rgba(0, 0, 0, .55);
+}
+
+.green .line {
+	width: 100%;
+	height: 1px;
+	background: rgba(0, 0, 0, .55);
+}
+
+.card-title {
+	padding-bottom: 5px;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.text-bigger {
+	font-size: 18px;
+}
+
+.card-content-text {
+	padding-top: 5px;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.material-icons {
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+.red {
+	transition: 1s all ease;
+	color: rgba(255,255,255,0.95);
+	background: #FF2C41;
+}
+
+.green {
+	transition: 1s all ease;
+	color: rgba(0,0,0,0.8);
+	background: #34EB74;
+}
+
+.yellow {
+	transition: 1s all ease;
+	color: rgba(0,0,0,0.8);
+	background: #FFC527;
+}
+	

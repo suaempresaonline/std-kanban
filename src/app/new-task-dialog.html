@@ -1,0 +1,59 @@
+<div mat-dialog-content style="height: 200px;">
+	<form>
+		<div fxLayout="row" fxLayoutAlign="center none">
+			<div fxFlex="100">
+				<mat-form-field class="full-width-input">
+					<input matInput tabindex="1" placeholder="Título da tarefa" width="100%" [(ngModel)]="data.title" value="{{data.title}}" [ngModelOptions]="{standalone: true}">
+				</mat-form-field>
+			</div>
+		</div>
+
+		<div fxLayout="row" fxLayoutAlign="center none">
+			<div fxFlex="32">
+				<mat-form-field class="full-width-input">
+						<input matInput tabindex="1" placeholder="ID da tarefa" width="100%" [(ngModel)]="data.redmine_id" value="{{data.redmine_id}}" [ngModelOptions]="{standalone: true}">
+				</mat-form-field>
+			</div>
+			<div fxFlex="3"></div>
+			<div fxFlex="31">
+				<mat-form-field class="full-width-input">
+					<mat-select placeholder="Desenvolvedor responsável" [(ngModel)]="data.developer" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+						<mat-option *ngFor="let developer of developers" [value]="developer">
+							{{developer}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div fxFlex="3"></div>
+			<div fxFlex="32">
+				<mat-form-field class="full-width-input">
+					<input matInput [matDatepicker]="picker" placeholder="Data de conclusão">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</div>
+		</div>
+		<div fxLayout="row" fxLayoutAlign="center none">
+			<div fxFlex="100">
+				<mat-radio-group [(ngModel)]="data.option" [ngModelOptions]="{standalone: true}">
+					<mat-radio-button [value]="'td'" ngDefaultControl>To-do</mat-radio-button>
+					<mat-radio-button class="margin-left-10" [value]="'di'" ngDefaultControl>Doing</mat-radio-button>
+					<mat-radio-button class="margin-left-10" [value]="'dn'" ngDefaultControl>Done</mat-radio-button>
+				</mat-radio-group>
+			</div>
+		</div>
+	</form>
+
+</div>
+<div mat-dialog-actions>
+	<button mat-button (click)="onNoClick()">Cancelar</button>
+	<button mat-button (click)="setTask()" cdkFocusInitial>Criar</button>
+</div>
+<style>
+	.full-width-input {
+		width: 100%;
+	}
+	.margin-left-10 {
+		margin-left: 10px;
+	}
+</style>
