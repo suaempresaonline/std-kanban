@@ -1,10 +1,13 @@
-import { Component, Inject , Input} from '@angular/core';
+import { Output, Component, Inject , Input} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material';
 import { DragulaService } from 'ng2-dragula';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TaskService } from './services/task-service/task-service';
+import { MnFullpageModule } from 'ngx-fullpage';
+import { MnFullpageService } from 'ngx-fullpage';
+
 
 @Component({
 	selector: 'new-task-dialog',
@@ -23,7 +26,7 @@ import { TaskService } from './services/task-service/task-service';
 })
 
 export class NewTaskDialog {
-
+	
 	developers = [
 		'Bruno Montanha',
 		'David Pinheiro',
@@ -82,10 +85,14 @@ export class AppComponent {
 	channelTask;
 	channelTasks;
 	
-	constructor(private dragulaService: DragulaService, public dialog: MatDialog, public taskService: TaskService) {
+	constructor(private dragulaService: DragulaService, public dialog: MatDialog, public taskService: TaskService, public fullpage: MnFullpageService) {
 		dragulaService.setOptions('bag-one', {
 			removeOnSpill: false
 		});
+
+		/*setInterval(function(){
+			fullpage.moveSectionDown();
+		}, 10000);*/
 
 		dragulaService.dropModel.subscribe((value) => {
 			console.log(`drop: ${value[0]}`);

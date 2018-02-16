@@ -8,6 +8,8 @@ import { NewTaskDialog } from './app.component';
 
 import { TaskService } from './services/task-service/task-service';
 import { HttpModule } from '@angular/http';
+import { MnFullpageModule } from 'ngx-fullpage';
+import { MnFullpageService } from 'ngx-fullpage';
 
 import {
 	MatButtonModule,
@@ -55,7 +57,7 @@ const materialModules = [
 		AppComponent,
 		NewTaskDialog
 	],
-	imports: [materialModules, FlexLayoutModule, HttpModule],
+	imports: [materialModules, FlexLayoutModule, HttpModule, BrowserModule, MnFullpageModule.forRoot()],
 	exports: [materialModules],
 	providers: [TaskService],
 	bootstrap: [AppComponent],

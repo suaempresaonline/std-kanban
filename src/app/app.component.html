@@ -1,52 +1,92 @@
-<mat-toolbar color="primary">
-	Solutudo Scrum App
-	<span class="example-spacer"></span>
-	<button mat-button (click)="openDialog()">CRIAR NOVA TAREFA</button>
-</mat-toolbar>
-<div fxLayout="row" fxLayoutAlign="center none" style="height: 100%;">
-	<div fxFlex="33" border-separator>
-		<h1>To-do</h1>
-		<div class="card-content" [dragula]='"bag-one"' [dragulaModel]='todo'>
-			<div scrum-card class="red" *ngFor="let taskOpt of todo">
-				<div *ngIf="taskOpt?.redmine_id"><div class="card-title text-bigger">#{{taskOpt?.redmine_id}}</div><div class="line" style="margin-top: 2.5px; margin-bottom: 2.5px;"></div></div>
-				<div class="card-title">{{taskOpt?.title}}</div>
-				<div *ngIf="taskOpt?.developer">
-					<div class="line"></div>
-					<p class="card-content-text">
-						<i class="material-icons">&#xE853;</i> {{taskOpt?.developer}}
-					</p>
-				</div>	
+<div mnFullpage
+	[mnFullpageNavigation]="true"
+	[mnFullpageKeyboardScrolling]="true"
+	[mnFullpageSlidesNavigation]="true"
+	[mnFullpageControlArrows]="true"
+	[mnFullpageScrollingSpeed]=700
+	[mnFullpageLoopBottom]="true"
+	[mnFullpageLoopHorizontal]="true"
+>
+	<div class="section welcome-section fp-section fp-table">
+		<div class="fp-tableCell">
+						
+			<!--<mat-toolbar color="primary">
+				Dashboard do fluxo de desenvolvimento integrado ao Redmine
+				<span class="example-spacer"></span>
+				<button mat-button (click)="openDialog()">CRIAR NOVA TAREFA</button>
+			</mat-toolbar>-->
+			<div fxLayout="row" fxLayoutAlign="center none" style="height: 100%;">
+				<div fxFlex="33" border-separator>
+					<h1>To-do</h1>
+					<div class="card-content">
+						<div scrum-card *ngFor="let taskOpt of todo" class="{{taskOpt.color}}">
+							<div *ngIf="taskOpt?.id">
+								<div class="card-title text-bigger">
+									<a href="http://projetos.solutudo.com/issues/{{taskOpt?.id}}" target="_blank">#{{taskOpt?.id}}</a>
+								</div>
+								<div class="line" style="margin-top: 2.5px; margin-bottom: 2.5px;"></div>
+							</div>
+							<div class="card-title">{{taskOpt?.title}}</div>
+							<div *ngIf="taskOpt?.developer">
+								<div class="line"></div>
+								<p class="card-content-text">
+									<i class="material-icons">&#xE853;</i> {{taskOpt?.developer}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div fxFlex="33" border-separator>
+					<h1>Doing</h1>
+					<div class="card-content">
+						<div scrum-card *ngFor="let taskOpt of doing" class="{{taskOpt.color}}">
+							<div *ngIf="taskOpt?.id">
+								<div class="card-title text-bigger">
+									<a href="http://projetos.solutudo.com/issues/{{taskOpt?.id}}" target="_blank">#{{taskOpt?.id}}</a>
+								</div>
+								<div class="line" style="margin-top: 2.5px; margin-bottom: 2.5px;"></div>
+							</div>
+							<div class="card-title">{{taskOpt?.title}}</div>
+							<div *ngIf="taskOpt?.developer">
+								<div class="line"></div>
+								<p class="card-content-text">
+									<i class="material-icons">&#xE853;</i> {{taskOpt?.developer}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div fxFlex="33" border-separator>
+					<h1>Done</h1>
+					<div class="card-content">
+						<div scrum-card *ngFor="let taskOpt of done" class="{{taskOpt.color}}">
+							<div *ngIf="taskOpt?.id">
+								<div class="card-title text-bigger">
+									<a href="http://projetos.solutudo.com/issues/{{taskOpt?.id}}" target="_blank">#{{taskOpt?.id}}</a>
+								</div>
+								<div class="line" style="margin-top: 2.5px; margin-bottom: 2.5px;"></div>
+							</div>
+							<div class="card-title">{{taskOpt?.title}}</div>
+							<div *ngIf="taskOpt?.developer">
+								<div class="line"></div>
+								<p class="card-content-text">
+									<i class="material-icons">&#xE853;</i> {{taskOpt?.developer}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div fxFlex="33" border-separator>
-		<h1>Doing</h1>
-		<div class="card-content" [dragula]='"bag-one"' [dragulaModel]='doing'>
-			<div scrum-card class="yellow" *ngFor="let taskOpt of doing">
-				<div *ngIf="taskOpt?.redmine_id"><div class="card-title text-bigger">#{{taskOpt?.redmine_id}}</div><div class="line" style="margin-top: 2.5px; margin-bottom: 2.5px;"></div></div>
-				<div class="card-title">{{taskOpt?.title}}</div>
-				<div *ngIf="taskOpt?.developer">
-					<div class="line"></div>
-					<p class="card-content-text">
-						<i class="material-icons">&#xE853;</i> {{taskOpt?.developer}}
-					</p>
-				</div>	
-			</div>
+	<div class="section welcome-section fp-section fp-table">
+		<div class="fp-tableCell">
+			2
 		</div>
 	</div>
-	<div fxFlex="33" border-separator>
-		<h1>Done</h1>
-		<div class="card-content" [dragula]='"bag-one"' [dragulaModel]='done'>
-			<div scrum-card class="green" *ngFor="let taskOpt of done">
-				<div *ngIf="taskOpt?.redmine_id"><div class="card-title text-bigger">#{{taskOpt?.redmine_id}}</div><div class="line" style="margin-top: 2.5px; margin-bottom: 2.5px;"></div></div>
-				<div class="card-title">{{taskOpt?.title}}</div>
-				<div *ngIf="taskOpt?.developer">
-					<div class="line"></div>
-					<p class="card-content-text">
-						<i class="material-icons">&#xE853;</i> {{taskOpt?.developer}}
-					</p>
-				</div>		
-			</div>
+	<div class="section welcome-section fp-section fp-table">
+		<div class="fp-tableCell">
+			3
 		</div>
 	</div>
 </div>
@@ -61,6 +101,7 @@
 		width: 33%;
 		display: inline-block;
 	}*/
+
 	h1 {
 		margin-top: 15px;
 		margin-left: 15px;
@@ -68,6 +109,7 @@
 		font-weight: 500;
 		color: rgba(0, 0, 0, 0.58)
 	}
+
 	.example-card {
 		width: 400px;
 	}
