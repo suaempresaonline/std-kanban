@@ -113,19 +113,25 @@ export class AppComponent {
 		});
 	}
 
-	ngOnInit() {
-		//this.getTasks('xd');
-		this.listenAction();
-		this.getRedmineTasks();
-	}
-
-	getRedmineTasks() {
+	public getRedmineTasks() {
 		this.taskService.getRedmineTasks().subscribe(data => {
 			this.todo = data.tasks.todo;
 			this.doing = data.tasks.doing;
 			this.done = data.tasks.done;
 			console.log(data.tasks);
 		});
+	}
+
+	ngOnInit() {
+		//this.getTasks('xd');
+		this.listenAction();
+		this.getRedmineTasks();
+
+		/*setInterval(function(){
+			this.getRedmineTasks();
+		}, 1000);*/
+
+		setInterval(() => { this.getRedmineTasks(); }, 1000 * 60 * 5);
 	}
 
 	listenAction() {

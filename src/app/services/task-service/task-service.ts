@@ -38,15 +38,15 @@ export class TaskService {
 	}
 
 	setRemoteTask(data) {
-		return this.http.post('http://192.168.0.53/api.std-scrum-app.com/task/request.json', data).map(this.extractData);
+		return this.http.post('http://dash.solutudo.com/task/request.json', data).map(this.extractData);
 	}
 
 	updateTasks(data) {
-		return this.http.post('http://192.168.0.53/api.std-scrum-app.com/task/update.json', data).map(this.extractData);
+		return this.http.post('http://dash.solutudo.com/task/update.json', data).map(this.extractData);
 	}
 	
 	getRedmineTasks() {
-		return this.http.get('http://192.168.0.53/api.std-scrum-app.com/task/redmine.json').map(this.extractData);
+		return this.http.get('http://dash.solutudo.com/task/redmine.json').map(this.extractData);
 	}
 	
 	extractData = (res: Response) => {
